@@ -2,27 +2,27 @@
 
 \paragraph{}
 \textbf{Q1:}
-How does the .p12 file work? Explain what this file is and its relationship to the NTNU CA.
+\textit{How does the .p12 file work? Explain what this file is and its relationship to the NTNU CA.}
 
 \paragraph{}
 \textbf{Q2:}
-Explain what the string \verb/TLS_DHE_RSA_WITH_AES_128_CBC_SHA/ means in Figure 4. Comment on security related issues regarding the cryptographic algorithms used to generate and sign your group's web server certificate (key lengths, algorithms, etc.).
+\cprotect\textit{Explain what the string \verb/TLS_DHE_RSA_WITH_AES_128_CBC_SHA/ means in Figure 4. Comment on security related issues regarding the cryptographic algorithms used to generate and sign your group's web server certificate (key lengths, algorithms, etc.).}
 
 \paragraph{}
 \textbf{Q3:}
-List and explain the verifications. What is the difference between the two files? Who has signed the Apache release? What is the point of this process?
+\textit{List and explain the verifications. What is the difference between the two files? Who has signed the Apache release? What is the point of this process?}
 
 \paragraph{}
 \textbf{Q4:}
-What is the purpose of a certificate chain? Describe, on a high-level, the steps that your browser takes when verifying the authenticity of a web page served over HTTPS.
+\textit{What is the purpose of a certificate chain? Describe, on a high-level, the steps that your browser takes when verifying the authenticity of a web page served over HTTPS.}
 
 \paragraph{}
 \textbf{Q5:}
-Web servers offering weak cryptography are subject to several attacks. List 3 feasible attacks and explain them briefly. How did you configure your server to prevent such attacks?
+\textit{Web servers offering weak cryptography are subject to several attacks. List 3 feasible attacks and explain them briefly. How did you configure your server to prevent such attacks?}
 
 \paragraph{}
 \textbf{Q6:}
-Cookies can be potential security risk if not handled properly, especially if they contain sensitive information. Two important flags can be set on cookies: \verb/HTTP-Only/ and \verb/secure/. What does the \verb/HTTP-Only/ flag do and how does it work? What does the \verb/secure/ flag do and how does it work?
+\cprotect\textit{Cookies can be potential security risk if not handled properly, especially if they contain sensitive information. Two important flags can be set on cookies: \verb/HTTP-Only/ and \verb/secure/. What does the \verb/HTTP-Only/ flag do and how does it work? What does the \verb/secure/ flag do and how does it work?}
 
 The \verb/HTTP-Only/ flag makes sure the cookie cannot be accessed from JavaScript. This stops malicious scripts from being able to obtain cookies from websites.
 
@@ -30,7 +30,7 @@ The \verb/secure/ flag ensures the cookie will only be transmitted to the server
 
 \paragraph{}
 \textbf{Q7:}
-What kind of malicious attacks is your web application (PHP) vulnerable to? Describe four briefly, and point out what countermeasures you have developed in your code to prevent such attacks.
+\textit{What kind of malicious attacks is your web application (PHP) vulnerable to? Describe four briefly, and point out what countermeasures you have developed in your code to prevent such attacks.}
 
 \textbf{SQL injections.} We make sure to use only prepared statements when interfacing the database.
 \textbf{XSS}. All user input is escaped before being stored in the database.
@@ -41,7 +41,7 @@ Another way would be using something other than cookies for storing session IDs,
 
 \paragraph{}
 \textbf{Q8:}
-Explain how you have stored the passwords of your users in your database. Why have you stored them like this? Why is it not a good idea to just store a users password as it is?
+\textit{Explain how you have stored the passwords of your users in your database. Why have you stored them like this? Why is it not a good idea to just store a users password as it is?}
 
 The users' passwords have been hashed with \verb/BCRYPT/.
 It is better than SHA1 which is still widely used, blah blah.
