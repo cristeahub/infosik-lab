@@ -2,7 +2,7 @@
 
 \paragraph{}
 \textbf{Q1:}
-How does the .p12 file work? Explain what this file is and its realtionship to the NTNU CA.
+How does the .p12 file work? Explain what this file is and its relationship to the NTNU CA.
 
 \paragraph{}
 \textbf{Q2:}
@@ -31,6 +31,13 @@ The \verb/secure/ flag ensures the cookie will only be transmitted to the server
 \paragraph{}
 \textbf{Q7:}
 What kind of malicious attacks is your web application (PHP) vulnerable to? Describe four briefly, and point out what countermeasures you have developed in your code to prevent such attacks.
+
+\textbf{SQL injections.} We make sure to use only prepared statements when interfacing the database.
+\textbf{XSS}. All user input is escaped before being stored in the database.
+\textbf{CSRF}. All forms contain a CSRF token.
+\textbf{Cookies shared with other sites on the same domain}. No way to prevent this, because cookies cannot be restricted to only one port on the server.
+The easiest way to fix this would be to use a custom domain for our site.
+Another way would be using something other than cookies for storing session IDs, for instance JSON Web Tokens.
 
 \paragraph{}
 \textbf{Q8:}
