@@ -20,6 +20,16 @@
 \textbf{Q5:}
 \textit{Web servers offering weak cryptography are subject to several attacks. List 3 feasible attacks and explain them briefly. How did you configure your server to prevent such attacks?}
 
+\begin{itemize}
+    \item
+        FREAK (Factoring Attack on RSA-EXPORT Keys)\cite{freak-ssl-tls}.
+        A client using a vulnerable version of OpenSSL coupled with a server offering export-grade cryptography is exposed to a RSA-to-EXPORT\_RSA downgrade attack.
+        The sesion key can then be brute-forced due to the shorter key length of EXPORT\_RSA.
+
+\end{itemize}
+
+All of these attacks are prevented by only allowing strong cipher suites in Apache.
+
 \paragraph{}
 \textbf{Q6:}
 \cprotect\textit{Cookies can be a potential security risk if not handled properly, especially if they contain sensitive information. Two important flags can be set on cookies: \verb/HTTP-Only/ and \verb/secure/. What does the \verb/HTTP-Only/ flag do and how does it work? What does the \verb/secure/ flag do and how does it work?}
