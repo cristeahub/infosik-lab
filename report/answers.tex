@@ -5,8 +5,9 @@
 \textit{How does the .p12 file work? Explain what this file is and its relationship to the NTNU CA.}
 
 The .p12-file is an archive file format containing a bundle of cryptography objects, defined by the PKCS\#12 RFC\cite{pkcs-12}.
-It may contain x.509 public-key certificates\cite{x509}, encrypted private keys, and certificate revocation lists, and more.
+It may contain x.509 public-key certificates\cite{x509}, encrypted private keys, certificate revocation lists, and more.
 When imported into a web-browser like Mozilla Firefox, it can be used for establishing identity against servers requiring it.
+
 Its relation to the NTNU CA is that the validity of the public key certificate contained within is guaranteed by a chain of CA's signing each others certificates, with the NTNU CA at the root.
 Therefore, the public key certificate is only valid for entities having accepted the NTNU CA as their lord and saviour.
 
