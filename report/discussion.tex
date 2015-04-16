@@ -1,3 +1,21 @@
 \section{Discussion}
 
-Discussion
+\subsection{Part I}
+
+Straightforward, just like it said in the lab description.
+We should still explain why we did things.
+
+\subsection{Part II}
+
+- Configured apache cipher suite: SSLCipherSuite HIGH:!aNULL:!MD5
+
+\subsection{Part III}
+
+After installing PHP, we made adjustments in the php.ini file to enhance the security of our application.
+First, we configured PHP sessions to use the \verb/HTTP-Only/ and \verb/secure/ flags (explained in Q6).
+We also changed the default session save path to a folder inside our home directory, to prevent other users of the same server to access our sessions.
+Finally, we disabled public error logging (only logging to file), to minimize the amount of information others could get out of our application.
+
+The biggest security issue we can think of in our implementation, is caused by the fact that our web site share a domain name with other web applications.
+Unfortunately, the session cookie cannot be restricted to only a certain port, and this means other web sites on the same domain will also receive the session cookie when a user that is currently logged into our site sends requests to them.
+This allows the websites to obtain session ids which can be used to authenticate as a user on our web site.
