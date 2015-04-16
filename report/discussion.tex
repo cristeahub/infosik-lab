@@ -2,12 +2,16 @@
 
 \subsection{Part I}
 
-Straightforward, just like it said in the lab description.
-We should still explain why we did things.
+We created a certificate for our Apache Web server, signed by our very own Certificate Authority in the NTNU CA chain.
+Being our own Certificate Authority allows us to issue new certificates when our empire needs expanding.
+
+To achieve this, we registered our Group CA request at the course webpage, which was then signed by the course staff.
+Our identities were confirmed to the course webpage by our personal .p12 files, signed by the NTNU Student CA.
 
 \subsection{Part II}
 
-- Configured apache cipher suite: SSLCipherSuite HIGH:!aNULL:!MD5
+The distributed versions of apache-httpd was verified, and installed.
+Changes were made to the default SSL cipher suite to only allow high security SSL ciphers, as well as disabling the insecure hashing algorithm MD5.
 
 \subsection{Part III}
 
