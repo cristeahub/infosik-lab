@@ -82,6 +82,6 @@ Another way would be using something other than cookies for storing session IDs,
 \textbf{Q8:}
 \textit{Explain how you have stored the passwords of your users in your database. Why have you stored them like this? Why is it not a good idea to just store a users password as it is?}
 
-The users' passwords have been hashed with \verb/BCRYPT/.
-It is better than SHA1 which is still widely used, blah blah.
+The users' passwords have been hashed with the Blowfish\cite{blowfish} algorithm, and with a random salt per user.
+It is the recommended, and default, way to do password hashing in modern PHP\cite{php_passwords}.
 If they were stored in plaintext, they would be readable by us and anyone who gains access to the database.
