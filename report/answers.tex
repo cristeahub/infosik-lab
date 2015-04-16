@@ -16,6 +16,9 @@
 \textbf{Q4:}
 \textit{What is the purpose of a certificate chain? Describe, on a high-level, the steps that your browser takes when verifying the authenticity of a web page served over HTTPS.}
 
+Certificate chains are needed to verify that the public key, and other data, of a certificate is correct.
+The browser verifies the authenticity of a host by looking at the signature of each certificate in the chain, and verifying it with the next certificate, until it reaches a known and trusted certificate – a root CA.\cite{x509}
+
 \paragraph{}
 \textbf{Q5:}
 \textit{Web servers offering weak cryptography are subject to several attacks. List 3 feasible attacks and explain them briefly. How did you configure your server to prevent such attacks?}
