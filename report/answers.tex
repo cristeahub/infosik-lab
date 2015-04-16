@@ -25,6 +25,17 @@ The cipher used is AES, which was first introduced in 2001\cite{rfc3268} to mode
 \textbf{Q3:}
 \textit{List and explain the verifications. What is the difference between the two files? Who has signed the Apache release? What is the point of this process?}
 
+Apache distributes all its releases with a corresponding OpenPGP signature\cite{pgp} and MD5 hash.
+After retrieving the RSA key ID of the signature with GPG\cite{gpg}, the corresponding public key can be retrieved from a key server (pgpkeys.mit.edu for instance).
+If the received public key matches the signature, then the file has not been tampered with since signing.
+To verify that the received public key actually belongs to the person it claims to, a sufficiently secure in-person key exchange is required.
+Alternatively, one can enter a web of trust.
+
+The httpd-2.4.12.tar.gz.asc file contains the PGP Signature corresponding to the tar.gz archive.
+
+The provided release (httpd-2.4.12.tar.gz) has been signed by Jim Jagielski with RSA key ID 791485A8.
+This process ensures that we can verify the integrity and validity of httpd even when it has been acuired through a non-secure channel (http).
+
 \paragraph{}
 \textbf{Q4:}
 \textit{What is the purpose of a certificate chain? Describe, on a high-level, the steps that your browser takes when verifying the authenticity of a web page served over HTTPS.}
