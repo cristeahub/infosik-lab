@@ -23,8 +23,8 @@ SHA is for message signing.
 
 The choice of algorithm to use to generate and sign web certificates plays a huge part in security.
 If one uses an unsecure algortihm like MD5 for signing one can create a rogue CA and thereby impersonate any website on the internet\cite{md5-harmful}.
-As well as having a seucre algorithm, the key length must be long enough to make sure people can't break the security.
-In the practical, AES with few bits was broken, even though AES itself is concidered secure\cite{nsa-secure}.
+As well as having a secure algorithm, the key length must be long enough to make sure people can't break the security.
+AES with short key length can easily be broken, even though AES itself is considered secure\cite{nsa-secure}.
 
 \paragraph{}
 \textbf{Q3:}
@@ -86,7 +86,7 @@ We accomplished this by using built-in functionality for prepared statements whe
 All user input is therefore escaped before being stored in the database. \\
 \textbf{CSRF}. To make sure POST requests to our site is only coming from intended forms in our application, all forms contain a server generated unique token.
 This token is then validated on each POST request. \\
-\textbf{Cookies shared with other sites on the same domain}. There is for us no way to prevent this, because cookies cannot be restricted to only one port on the server.
+\textbf{Cookies shared across hostname}. There is for us no way to prevent this, because cookies cannot be restricted to only one port on the server.
 The easiest way to fix this would be to use a custom domain for our site.
 Another way would be using something other than cookies for storing session IDs, for instance JSON Web Tokens.
 This, however, has other problems, mainly tokens being accessible from JavaScript.
@@ -96,8 +96,8 @@ This, however, has other problems, mainly tokens being accessible from JavaScrip
 \textit{Explain how you have stored the passwords of your users in your database. Why have you stored them like this? Why is it not a good idea to just store a users password as it is?}
 
 The users' passwords have been hashed with the Blowfish\cite{blowfish} algorithm, and with a random salt per user.
-The Blowfish algorithm is designed to consume a certain amount of time when hashing passwords, in contrast to for instance SHA1, which opts to use as little time as possible.
-This makes it so that a brute force attack on the passwords will take a long time.
+The Blowfish algorithm is designed to consume a certain amount of time when hashing passwords, in contrast to for instance SHA1, which is optimized for efficiency.
+This ensures that a brute force attack on the passwords will take a long time.
 
 With a random salt for each user, techniques like rainbow tables, which are used to speed up a brute force attack, will not work as each password with a different salt would need its own rainbow table.
 
