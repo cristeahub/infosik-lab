@@ -59,6 +59,10 @@ The browser verifies each certificate in the list in order until it reaches a kn
         FREAK (Factoring Attack on RSA-EXPORT Keys)\cite{freak-ssl-tls}.
         A client using a vulnerable version of OpenSSL coupled with a server offering export-grade cryptography is exposed to a RSA-to-EXPORT\_RSA downgrade attack.
         The sesion key can then be brute-forced due to the shorter key length of EXPORT\_RSA.
+    \item
+        RC4 keystream bias leading to plaintext recovery.
+        In 2013, the RC4 cipher's keystream was found to have statistical bias\cite{usenix-rc4}.
+        This bias led to two feasible attacks on RC4, allowing full plaintext recovery from the worst one, if an attacker were to acquire many ciphertexts, ($2^{32}$), corresponding to the same message.
 
 \end{itemize}
 
