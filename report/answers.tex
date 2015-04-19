@@ -62,11 +62,15 @@ The browser verifies each certificate in the list in order until it reaches a kn
     \item
         RC4 keystream bias leading to plaintext recovery.
         In 2013, the RC4 cipher's keystream was found to have statistical bias\cite{usenix-rc4}.
-        This bias led to two feasible attacks on RC4, allowing full plaintext recovery from the worst one, if an attacker were to acquire many ciphertexts, ($2^{32}$), corresponding to the same message.
+        This bias led to two feasible attacks on RC4, allowing full plaintext recovery from the worst one, if an attacker were to acquire many ($2^{32}$) ciphertexts, corresponding to the same message.
+    \item
+        Lucky 13 - Timing attack on TLS CBC-mode ciphers\cite{lucky-thirteen}.
+        A flaw in the TLS specification when using CBC-mode allows for a timing attack when messages are padded in a certain way.
+        A standard padding oracle attack can then be carried out.
 
 \end{itemize}
 
-All of these attacks are prevented by only allowing strong cipher suites in Apache.
+All of these attacks are prevented by using TLS 1.2, and only allowing strong cipher suites in Apache.
 
 \paragraph{}
 \textbf{Q6:}
