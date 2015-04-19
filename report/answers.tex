@@ -76,12 +76,16 @@ The \verb/secure/ flag ensures the cookie will only be transmitted to the server
 \textbf{Q7:}
 \textit{What kind of malicious attacks is your web application (PHP) vulnerable to? Describe four briefly, and point out what countermeasures you have developed in your code to prevent such attacks.}
 
-\textbf{SQL injections.} We make sure to use only prepared statements when interfacing the database.
-\textbf{XSS}. All user input is escaped before being stored in the database.
-\textbf{CSRF}. All forms contain a CSRF token.
-\textbf{Cookies shared with other sites on the same domain}. No way to prevent this, because cookies cannot be restricted to only one port on the server.
+\textbf{SQL injections.} We make sure that all user input to the databse is correctly sanitized to avoid any user input being interpreted as SQL commands.
+We accomplished this by using built-in functionality for prepared statements when interfacing the database. \\
+\textbf{XSS}. User provided data could be interpreted as HTML which can load malicious scripts into the browser if not handled properly.
+All user input is therefore escaped before being stored in the database. \\
+\textbf{CSRF}. To make sure POST requests to our site is only coming from intended forms in our application, all forms contain a server generated unique token.
+This token is then validated on each POST request. \\
+\textbf{Cookies shared with other sites on the same domain}. There is for us no way to prevent this, because cookies cannot be restricted to only one port on the server.
 The easiest way to fix this would be to use a custom domain for our site.
 Another way would be using something other than cookies for storing session IDs, for instance JSON Web Tokens.
+This, however, has other problems, mainly tokens being accessible from JavaScript.
 
 \paragraph{}
 \textbf{Q8:}
