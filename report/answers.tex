@@ -18,11 +18,11 @@ Therefore, the public key certificate is only valid for entities having accepted
 The string \verb/TLS_DHE_RSA_WITH_AES_128_CBC_SHA/ describes what type of SSL cipher is used for the communication with the web server.
 This security lives on the transport layer and is referred to as TLS.
 The cipher used is AES, which was first introduced in 2001\cite{rfc3268} to modernize the TLS cipher suites.
-Diffie Hellman is used for key exchange.
-SHA is for message signing.
+Diffie Hellman with RSA is used for key exchange.
+SHA is used for message authentication.
 
 The choice of algorithm to use to generate and sign web certificates plays a huge part in security.
-If one uses an unsecure algortihm like MD5 for signing one can create a rogue CA and thereby impersonate any website on the internet\cite{md5-harmful}.
+If one uses an unsecure algorithm like MD5 for signing, one can create a rogue CA and thereby impersonate any website on the internet\cite{md5-harmful}.
 As well as having a secure algorithm, the key length must be long enough to make sure people can't break the security.
 AES with short key length can easily be broken, even though AES itself is considered secure\cite{nsa-secure}.
 
@@ -45,8 +45,8 @@ This process ensures that we can verify the integrity and validity of httpd even
 \textbf{Q4:}
 \textit{What is the purpose of a certificate chain? Describe, on a high-level, the steps that your browser takes when verifying the authenticity of a web page served over HTTPS.}
 
-Certificate chains are needed to verify that the public key, and other data, of a certificate is correct.
-The browser verifies the authenticity of a host by looking at the signature of each certificate in the chain.
+Certificate chains are used to verify the authenticity of a certificate.
+The browser does this by looking at the signature of each certificate in the chain.
 The signature has been created with the private key of the next certificate in the chain, and may therefore be verified using the public key of the next certificate.
 The browser verifies each certificate in the list in order until it reaches a known and trusted certificate – a root CA.\cite{x509}
 
@@ -58,13 +58,13 @@ The browser verifies each certificate in the list in order until it reaches a kn
     \item
         FREAK (Factoring Attack on RSA-EXPORT Keys)\cite{freak-ssl-tls}.
         A client using a vulnerable version of OpenSSL coupled with a server offering export-grade cryptography is exposed to a RSA-to-EXPORT\_RSA downgrade attack.
-        The sesion key can then be brute-forced due to the shorter key length of EXPORT\_RSA.
+        The session key can then be brute-forced due to the shorter key length of EXPORT\_RSA.
     \item
         RC4 keystream bias leading to plaintext recovery.
         In 2013, the RC4 cipher's keystream was found to have statistical bias\cite{usenix-rc4}.
-        This bias led to two feasible attacks on RC4, allowing full plaintext recovery from the worst one, if an attacker were to acquire many ($2^{32}$) ciphertexts, corresponding to the same message.
+        This bias led to two feasible attacks on RC4, allowing full plaintext recovery from the worst one, if an attacker were to acquire many ciphertexts, corresponding to the same message.
     \item
-        Lucky 13 - Timing attack on TLS CBC-mode ciphers\cite{lucky-thirteen}.
+        Lucky 13 - Timing attack on TLS CBC-mode ciphers\cite{lucky-13}.
         A flaw in the TLS specification when using CBC-mode allows for a timing attack when messages are padded in a certain way.
         A standard padding oracle attack can then be carried out.
 
@@ -85,10 +85,10 @@ The \verb/secure/ flag ensures the cookie will only be transmitted to the server
 \textit{What kind of malicious attacks is your web application (PHP) vulnerable to? Describe four briefly, and point out what countermeasures you have developed in your code to prevent such attacks.}
 
 \textbf{SQL injections.} We make sure that all user input to the databse is correctly sanitized to avoid any user input being interpreted as SQL commands.
-We accomplished this by using built-in functionality for prepared statements when interfacing the database. \\
+We accomplished this by using built-in functionality for prepared statements in PHP's PDO library\cite{pdo}. \\
 \textbf{XSS}. User provided data could be interpreted as HTML which can load malicious scripts into the browser if not handled properly.
 All user input is therefore escaped before being stored in the database. \\
-\textbf{CSRF}. To make sure POST requests to our site is only coming from intended forms in our application, all forms contain a server generated unique token.
+\textbf{CSRF}. To make sure POST requests to our site are only coming from intended forms in our application, all forms contain a server generated unique token.
 This token is then validated on each POST request. \\
 \textbf{Cookies shared across hostname}. There is for us no way to prevent this, because cookies cannot be restricted to only one port on the server.
 The easiest way to fix this would be to use a custom domain for our site.
@@ -100,7 +100,7 @@ This, however, has other problems, mainly tokens being accessible from JavaScrip
 \textit{Explain how you have stored the passwords of your users in your database. Why have you stored them like this? Why is it not a good idea to just store a users password as it is?}
 
 The users' passwords have been hashed with the Blowfish\cite{blowfish} algorithm, and with a random salt per user.
-The Blowfish algorithm is designed to consume a certain amount of time when hashing passwords, in contrast to for instance SHA1, which is optimized for efficiency.
+The Blowfish algorithm is designed to be adequately slow when hashing passwords, in contrast to for instance SHA, which is optimized for efficiency.
 This ensures that a brute force attack on the passwords will take a long time.
 
 With a random salt for each user, techniques like rainbow tables, which are used to speed up a brute force attack, will not work as each password with a different salt would need its own rainbow table.
