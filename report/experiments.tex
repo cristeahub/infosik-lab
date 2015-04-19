@@ -1,9 +1,15 @@
 \section{Experiments}
 \label{sec:experiments}
 
-Another group had incorrectly set their file permissions (execute bit for 'others' group).
+Another group, group 28, had incorrectly set their file permissions (execute bit for 'others' group).
 This gave us access to all of their files, including server certificates, private keys, and database passwords.
 The setup in this lab, which was given to us from the staff, was to have the same password for the database and the server login.
 We were therefore able to comprimise their entire user account.
 
+
 In addition to this, we were able to see what salts they used, how they hashed their passwords and other information that should be kept secret.
+
+
+Group 30's solution had an XSS vulnerability in their usernames.
+This means that every username that contains HTML will render that HTML when the username is displayed.
+When an admin visits a list of all users, there is a possibility to load harmful code into the browser that can steal the session cookie of the admin, or even interact with the admin panel.
