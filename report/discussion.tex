@@ -23,3 +23,6 @@ Finally, we disabled public error logging (only logging to file), to minimize th
 The biggest security issue we can think of in our implementation, is caused by the fact that our web site share a domain name with other web applications.
 Unfortunately, the session cookie cannot be restricted to only a certain port, and this means other web sites on the same domain will also receive the session cookie when a user that is currently logged into our site sends requests to them.
 This allows the websites to obtain session ids which can be used to authenticate as a user on our web site.
+
+In addition, security breaches caused by user behavior is always something to take into account.
+Someone might be able to guess the password of an admin, or gain access to a computer which is currently logged in to the web site.
