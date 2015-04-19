@@ -18,8 +18,13 @@ Therefore, the public key certificate is only valid for entities having accepted
 The string \verb/TLS_DHE_RSA_WITH_AES_128_CBC_SHA/ describes what type of SSL cipher is used for the communication with the web server.
 This security lives on the transport layer and is referred to as TLS.
 The cipher used is AES, which was first introduced in 2001\cite{rfc3268} to modernize the TLS cipher suites.
+Diffie Hellman is used for key exchange.
+SHA is for message signing.
 
-
+The choice of algorithm to use to generate and sign web certificates plays a huge part in security.
+If one uses an unsecure algortihm like MD5 for signing one can create a rogue CA and thereby impersonate any website on the internet\cite{md5-harmful}.
+As well as having a seucre algorithm, the key length must be long enough to make sure people can't break the security.
+In the practical, AES with few bits was broken, even though AES itself is concidered secure\cite{nsa-secure}.
 
 \paragraph{}
 \textbf{Q3:}
